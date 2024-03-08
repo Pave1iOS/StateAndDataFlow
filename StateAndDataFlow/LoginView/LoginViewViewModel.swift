@@ -10,4 +10,9 @@ import Foundation
 final class LoginViewViewModel: ObservableObject {
     @Published var name = ""
     @Published var isLoggedIn = false
+    
+    func logout() {
+        isLoggedIn.toggle()
+        name = ""
+    }
 }

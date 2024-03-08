@@ -28,8 +28,12 @@ final class ContentViewViewModel {
         
         buttonDidTapped()
     }
+}
+
+// MARK: Secondary functions
+private extension ContentViewViewModel {
     
-    @objc private func updateCounter() {
+    @objc func updateCounter() {
         if timerCounter > 0 {
             timerCounter -= 1
         } else {
@@ -38,17 +42,17 @@ final class ContentViewViewModel {
         }
     }
     
-    private func killTimer() {
+    func killTimer() {
         timer?.invalidate()
         timer = nil
     }
-    
-    private func buttonDidTapped() {
+
+    func buttonDidTapped() {
         if buttonTitle == "Reset" {
             timerCounter = 3
             buttonTitle = "Start"
         } else {
             buttonTitle = "Wait..."
-        }        
+        }
     }
 }

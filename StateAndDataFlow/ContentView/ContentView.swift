@@ -23,9 +23,14 @@ struct ContentView: View {
             
             Spacer()
             
-            ButtonView(contentViewVM: contentViewVM)
+            ButtonView(
+                title: contentViewVM.buttonTitle,
+                action: contentViewVM.startTimer
+            )
             
             Spacer()
+            
+            ButtonView(title: "Logout", color: .blue, action: loginViewVM.logout)
         }
     }
 }
@@ -37,17 +42,19 @@ struct ContentView: View {
 }
 
 struct ButtonView: View {
-    @Bindable var contentViewVM: ContentViewViewModel
+    var title: String
+    var color = Color.red
+    var action: () -> Void
     
     var body: some View {
-        Button(action: contentViewVM.startTimer) {
-            Text(contentViewVM.buttonTitle)
+        Button(action: action) {
+            Text(title)
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundStyle(.white)
         }
         .frame(width: 200, height: 60)
-        .background(.red)
+        .background(color)
         .clipShape(.rect(cornerRadius: 20))
         .overlay(
             RoundedRectangle(cornerRadius: 20)
