@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4613FCB42B9B95F200DFA543 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613FCB32B9B95F200DFA543 /* StorageManager.swift */; };
 		A8D4395F2B98A78B009D29D5 /* StateAndDataFlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D4395E2B98A78B009D29D5 /* StateAndDataFlowApp.swift */; };
 		A8D439612B98A78B009D29D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D439602B98A78B009D29D5 /* ContentView.swift */; };
 		A8D439632B98A78C009D29D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8D439622B98A78C009D29D5 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4613FCB32B9B95F200DFA543 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A8D4395B2B98A78B009D29D5 /* StateAndDataFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StateAndDataFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D4395E2B98A78B009D29D5 /* StateAndDataFlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateAndDataFlowApp.swift; sourceTree = "<group>"; };
 		A8D439602B98A78B009D29D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4613FCB52B9B95F900DFA543 /* StorageManager */ = {
+			isa = PBXGroup;
+			children = (
+				4613FCB32B9B95F200DFA543 /* StorageManager.swift */,
+			);
+			path = StorageManager;
+			sourceTree = "<group>";
+		};
 		A8D439522B98A78B009D29D5 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +72,7 @@
 				A8D4395E2B98A78B009D29D5 /* StateAndDataFlowApp.swift */,
 				A8D439752B98ECF7009D29D5 /* LoginView */,
 				A8D439722B98E2E3009D29D5 /* ContentView */,
+				4613FCB52B9B95F900DFA543 /* StorageManager */,
 				A8D4397A2B98EF4E009D29D5 /* Views */,
 				A8D439622B98A78C009D29D5 /* Assets.xcassets */,
 				A8D439642B98A78C009D29D5 /* Preview Content */,
@@ -176,6 +187,7 @@
 				A8D439792B98ED19009D29D5 /* LoginViewViewModel.swift in Sources */,
 				A8D439612B98A78B009D29D5 /* ContentView.swift in Sources */,
 				A8D4397C2B98EF6E009D29D5 /* RootView.swift in Sources */,
+				4613FCB42B9B95F200DFA543 /* StorageManager.swift in Sources */,
 				A8D4395F2B98A78B009D29D5 /* StateAndDataFlowApp.swift in Sources */,
 				A8D439772B98ED0C009D29D5 /* LoginView.swift in Sources */,
 				A8D439742B98E308009D29D5 /* ContentViewViewModel.swift in Sources */,
