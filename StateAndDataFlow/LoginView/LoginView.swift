@@ -10,14 +10,21 @@ import SwiftUI
 struct LoginView: View {
     @EnvironmentObject private var loginViewVM: LoginViewViewModel
     
+    @State private var disabled = true
+    
     var body: some View {
         VStack {
-            TextField("Enter your name", text: $loginViewVM.name)
-                .multilineTextAlignment(.center)
+            HStack {
+                TextField("Enter your name", text: $loginViewVM.name)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 200)
+                
+                TextView(text: loginViewVM, disabled: $disabled)
+            }
             
             Button(action: login) {
                 Label("OK", systemImage: "checkmark.circle")
-            }
+            }.disabled(disabled)
         }
     }
     
@@ -25,6 +32,27 @@ struct LoginView: View {
         if !loginViewVM.name.isEmpty {
             loginViewVM.isLoggedIn.toggle()
         }
+    }
+}
+
+struct TextView: View {
+    @ObservedObject var text: LoginViewViewModel
+    @State private var color = Color(.red)
+    @Binding var disabled: Bool
+    
+    var body: some View {
+        Text(text.name.count.formatted())
+            .foregroundStyle(color)
+            .frame(width: 50)
+            .onChange(of: text.name.count) { _, newValue in
+                if newValue >= 3 {
+                    color = .green
+                    disabled = false
+                } else {
+                    color = .red
+                    disabled = true
+                }
+            }
     }
 }
 
