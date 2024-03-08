@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject private var contentViewVM: ContentViewViewModel
+    @Environment(ContentViewViewModel.self) var contentViewVM
+    
     @EnvironmentObject private var loginViewVM: LoginViewViewModel
     
     var body: some View {
@@ -16,7 +17,7 @@ struct ContentView: View {
             Text("Hi, \(loginViewVM.name)!")
                 .padding(.top, 100)
                 .font(.largeTitle)
-            Text(contentViewVM.counter.formatted())
+            Text(contentViewVM.timerCounter.formatted())
                 .font(.largeTitle)
                 .padding(.top, 100)
             
@@ -31,12 +32,12 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(ContentViewViewModel())
+        .environment(ContentViewViewModel())
         .environmentObject(LoginViewViewModel())
 }
 
 struct ButtonView: View {
-    @ObservedObject var contentViewVM: ContentViewViewModel
+    @Bindable var contentViewVM: ContentViewViewModel
     
     var body: some View {
         Button(action: contentViewVM.startTimer) {

@@ -9,14 +9,14 @@ import Foundation
 import Observation
 
 @Observable
-final class ContentViewViewModel: ObservableObject {
-    var counter = 3
+final class ContentViewViewModel {
+    var timerCounter = 3
     var buttonTitle = "Start"
     
     private var timer: Timer?
     
     func startTimer() {
-        if counter > 0 {
+        if timerCounter > 0 {
             timer = Timer.scheduledTimer(
                 timeInterval: 1,
                 target: self,
@@ -30,8 +30,8 @@ final class ContentViewViewModel: ObservableObject {
     }
     
     @objc private func updateCounter() {
-        if counter > 0 {
-            counter -= 1
+        if timerCounter > 0 {
+            timerCounter -= 1
         } else {
             killTimer()
             buttonTitle = "Reset"
@@ -45,7 +45,7 @@ final class ContentViewViewModel: ObservableObject {
     
     private func buttonDidTapped() {
         if buttonTitle == "Reset" {
-            counter = 3
+            timerCounter = 3
             buttonTitle = "Start"
         } else {
             buttonTitle = "Wait..."

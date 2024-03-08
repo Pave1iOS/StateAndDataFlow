@@ -15,8 +15,8 @@ struct StateAndDataFlowApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                .environment(contentViewVM)
         }
+        .environment(contentViewVM)
         .environmentObject(loginViewVM)
     }
 }
