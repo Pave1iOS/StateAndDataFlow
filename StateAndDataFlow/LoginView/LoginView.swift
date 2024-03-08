@@ -9,9 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject private var loginViewVM: LoginViewViewModel
-    
-    @State private var disabled = true
-    
+        
     var body: some View {
         VStack {
             HStack {
@@ -19,12 +17,13 @@ struct LoginView: View {
                     .multilineTextAlignment(.center)
                     .frame(width: 200)
                 
-                TextView(text: loginViewVM, disabled: $disabled)
+                TextView(loginViewVM: loginViewVM)
             }
             
             Button(action: login) {
                 Label("OK", systemImage: "checkmark.circle")
-            }.disabled(disabled)
+            }
+            .disabled(loginViewVM.isDisabled)
         }
     }
     
@@ -36,22 +35,19 @@ struct LoginView: View {
 }
 
 struct TextView: View {
-    @ObservedObject var text: LoginViewViewModel
+    @ObservedObject var loginViewVM: LoginViewViewModel
     @State private var color = Color(.red)
-    @Binding var disabled: Bool
     
     var body: some View {
-        Text(text.name.count.formatted())
+        Text(loginViewVM.name.count.formatted())
             .foregroundStyle(color)
             .frame(width: 50)
-            .onChange(of: text.name.count) { _, newValue in
-                text.isValidation(
+            .onChange(of: loginViewVM.name.count) { _, newValue in
+                loginViewVM.isValidation(
                     value: newValue) {
                         color = .green
-                        disabled = false
                     } isValidationFalse: {
                         color = .red
-                        disabled = true
                     }
             }
     }
