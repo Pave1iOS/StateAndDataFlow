@@ -15,4 +15,12 @@ final class LoginViewViewModel: ObservableObject {
         isLoggedIn.toggle()
         name = ""
     }
+    
+    func isValidation(value: Int, isValidationTrue:() -> Void, isValidationFalse:() -> Void) {
+        if value >= 3 {
+            isValidationTrue()
+        } else {
+            isValidationFalse()
+        }
+    }
 }

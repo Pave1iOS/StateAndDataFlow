@@ -45,13 +45,14 @@ struct TextView: View {
             .foregroundStyle(color)
             .frame(width: 50)
             .onChange(of: text.name.count) { _, newValue in
-                if newValue >= 3 {
-                    color = .green
-                    disabled = false
-                } else {
-                    color = .red
-                    disabled = true
-                }
+                text.isValidation(
+                    value: newValue) {
+                        color = .green
+                        disabled = false
+                    } isValidationFalse: {
+                        color = .red
+                        disabled = true
+                    }
             }
     }
 }
