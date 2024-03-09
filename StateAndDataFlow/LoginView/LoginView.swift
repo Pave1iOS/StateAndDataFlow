@@ -11,20 +11,32 @@ struct LoginView: View {
     @EnvironmentObject private var loginViewVM: LoginViewViewModel
         
     var body: some View {
-        VStack {
-            HStack{
-                TextField("Enter your name", text: $loginViewVM.name)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 200)
-                    .padding(.leading, 60)
 
-                TextView(loginViewVM: loginViewVM)
+        ZStack {
+            Color.gray
+                .frame(width: 350, height: 100)
+                .opacity(0.4)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(lineWidth: 1))
+            VStack {
+                HStack{
+                    TextField("Enter your name", text: $loginViewVM.name)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 200)
+                        .textFieldStyle(.roundedBorder)
+                        .padding(.leading, 60)
+
+                    TextView(loginViewVM: loginViewVM)
+                }
+                
+                Button(action: login) {
+                    Label("OK", systemImage: "checkmark.circle")
+                }
+                .disabled(loginViewVM.isDisabled)
+                .padding(.top, 10)
             }
-            
-            Button(action: login) {
-                Label("OK", systemImage: "checkmark.circle")
-            }
-            .disabled(loginViewVM.isDisabled)
         }
     }
     
