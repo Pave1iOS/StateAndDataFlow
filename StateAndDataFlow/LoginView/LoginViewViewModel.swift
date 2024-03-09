@@ -8,9 +8,16 @@
 import Foundation
 
 final class LoginViewViewModel: ObservableObject {
-    @Published var name = ""
-    @Published var isLoggedIn = false
+    let user = User.getUser()
+    
+    @Published var name: String
+    @Published var isLoggedIn: Bool
     @Published var isDisabled = true
+    
+    init() {
+        name = user.name
+        isLoggedIn = user.isLoggedIn
+    }
 
     func logout() {
         isLoggedIn.toggle()
