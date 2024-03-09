@@ -31,7 +31,7 @@ struct LoginView: View {
                     TextView(loginViewVM: loginViewVM)
                 }
                 
-                Button(action: login) {
+                Button(action: loginViewVM.login) {
                     Label("OK", systemImage: "checkmark.circle")
                 }
                 .disabled(loginViewVM.isDisabled)
@@ -39,20 +39,11 @@ struct LoginView: View {
             }
         }
     }
-    
-    private func login() {
-        let user = loginViewVM.user
-        
-        if !loginViewVM.name.isEmpty {
-            loginViewVM.isLoggedIn.toggle()
-        }
-        user.saveUser(loginViewVM.name, isLoggedIn: loginViewVM.isLoggedIn)
-    }
 }
 
 struct TextView: View {
     @ObservedObject var loginViewVM: LoginViewViewModel
-    @State private var color = Color(.red)
+    @State private var color = Color.red
     
     var body: some View {
         Text(loginViewVM.name.count.formatted())

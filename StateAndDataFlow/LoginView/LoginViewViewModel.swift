@@ -18,7 +18,15 @@ final class LoginViewViewModel: ObservableObject {
         name = user.name
         isLoggedIn = user.isLoggedIn
     }
-
+    
+    func login() {
+        if !name.isEmpty {
+            isLoggedIn.toggle()
+        }
+        
+        user.saveUser(name, isLoggedIn: isLoggedIn)
+    }
+    
     func logout() {
         isLoggedIn.toggle()
         name = ""
