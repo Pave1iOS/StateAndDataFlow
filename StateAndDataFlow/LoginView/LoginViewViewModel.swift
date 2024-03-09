@@ -23,6 +23,8 @@ final class LoginViewViewModel: ObservableObject {
         isLoggedIn.toggle()
         name = ""
         isDisabled = true
+        
+        user.deleteUser()
     }
     
     func isValidation(value: Int, isValidationTrue:() -> Void, isValidationFalse:() -> Void) {

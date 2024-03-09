@@ -16,4 +16,12 @@ struct User {
         
         return User(name: dataStore.user, isLoggedIn: dataStore.isLoggedIn)
     }
+    
+    func saveUser(_ user: String, isLoggedIn: Bool) {
+        DataStore.shared.saveUser(user, isLoggedIn: isLoggedIn)
+    }
+    
+    func deleteUser() {
+        DataStore.shared.deleteUser()
+    }
 }

@@ -14,20 +14,15 @@ final class DataStore {
     @AppStorage("user") var user = ""
     @AppStorage("isLoggedIn") var isLoggedIn = false
     
-    func save(_ user: String, isLoggedIn: Bool) {
+    private init(){}
+    
+    func saveUser(_ user: String, isLoggedIn: Bool) {
         self.user = user
         self.isLoggedIn = isLoggedIn
     }
     
-    func delete() {
-        
+    func deleteUser() {
+        user = ""
+        isLoggedIn = false
     }
-        
-    private init(){}
 }
-
-// сохранение данных
-
-// восстановление данных
-
-// удаление данных

@@ -28,12 +28,12 @@ struct LoginView: View {
     }
     
     private func login() {
-        let dataStore = DataStore.shared
+        let user = loginViewVM.user
         
         if !loginViewVM.name.isEmpty {
             loginViewVM.isLoggedIn.toggle()
         }
-        dataStore.save(loginViewVM.name, isLoggedIn: loginViewVM.isLoggedIn)
+        user.saveUser(loginViewVM.name, isLoggedIn: loginViewVM.isLoggedIn)
     }
 }
 
