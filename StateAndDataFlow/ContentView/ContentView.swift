@@ -31,6 +31,7 @@ struct ContentView: View {
             Spacer()
             
             ButtonView(title: "Logout", color: .blue, action: loginViewVM.logout)
+                .padding(.bottom, 10)
         }
     }
 }
